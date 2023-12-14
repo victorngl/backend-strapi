@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mealplans",
+  "info": {
+    "singularName": "mealplan",
+    "pluralName": "mealplans",
+    "displayName": "Mealplan"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "studentName": {
+      "type": "string",
+      "required": true
+    },
+    "plan": {
+      "type": "enumeration",
+      "enum": [
+        "Nenhum plano de alimentação",
+        "Plano Integral Completo",
+        "Plano Café da Manhã + Almoço",
+        "Plano Almoço + Lanche da Tarde",
+        "Plano Almoço",
+        "Plano Café da Manhã",
+        "Plano Lanche da Tarde"
+      ],
+      "required": true
+    },
+    "parentName": {
+      "type": "string",
+      "required": true
+    },
+    "parentEmail": {
+      "type": "email"
+    }
+  }
+}
