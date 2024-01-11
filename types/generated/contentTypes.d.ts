@@ -362,49 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiMealplanMealplan extends Schema.CollectionType {
-  collectionName: 'mealplans';
-  info: {
-    singularName: 'mealplan';
-    pluralName: 'mealplans';
-    displayName: 'Mealplan';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    studentName: Attribute.String & Attribute.Required;
-    plan: Attribute.Enumeration<
-      [
-        'Nenhum plano de alimenta\u00E7\u00E3o',
-        'Plano Integral Completo',
-        'Plano Caf\u00E9 da Manh\u00E3 + Almo\u00E7o',
-        'Plano Almo\u00E7o + Lanche da Tarde',
-        'Plano Almo\u00E7o',
-        'Plano Caf\u00E9 da Manh\u00E3',
-        'Plano Lanche da Tarde'
-      ]
-    > &
-      Attribute.Required;
-    parentName: Attribute.String & Attribute.Required;
-    parentEmail: Attribute.Email;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::mealplan.mealplan',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::mealplan.mealplan',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -720,6 +677,124 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiGateMoveGateMove extends Schema.CollectionType {
+  collectionName: 'gate_moves';
+  info: {
+    singularName: 'gate-move';
+    pluralName: 'gate-moves';
+    displayName: 'GateMove';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    student_id: Attribute.String;
+    studant_name: Attribute.String;
+    schedule: Attribute.String;
+    type: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::gate-move.gate-move',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::gate-move.gate-move',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMealplanMealplan extends Schema.CollectionType {
+  collectionName: 'mealplans';
+  info: {
+    singularName: 'mealplan';
+    pluralName: 'mealplans';
+    displayName: 'Mealplan';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    studentName: Attribute.String & Attribute.Required;
+    plan: Attribute.Enumeration<
+      [
+        'Nenhum plano de alimenta\u00E7\u00E3o',
+        'Plano Integral Completo',
+        'Plano Caf\u00E9 da Manh\u00E3 + Almo\u00E7o',
+        'Plano Almo\u00E7o + Lanche da Tarde',
+        'Plano Almo\u00E7o',
+        'Plano Caf\u00E9 da Manh\u00E3',
+        'Plano Lanche da Tarde'
+      ]
+    > &
+      Attribute.Required;
+    parentName: Attribute.String & Attribute.Required;
+    parentEmail: Attribute.Email;
+    questionSent: Attribute.Boolean & Attribute.Required;
+    course: Attribute.String;
+    renew: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::mealplan.mealplan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::mealplan.mealplan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNightActivieNightActivie extends Schema.CollectionType {
+  collectionName: 'night_activies';
+  info: {
+    singularName: 'night-activie';
+    pluralName: 'night-activies';
+    displayName: 'Night Activie';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    studentName: Attribute.String & Attribute.Required;
+    course: Attribute.String & Attribute.Required;
+    priority: Attribute.String & Attribute.Required;
+    culturalActivitie: Attribute.String & Attribute.Required;
+    esportiveActivitie: Attribute.String & Attribute.Required;
+    optionalActivitie: Attribute.String;
+    userAnswer: Attribute.String;
+    answerTime: Attribute.DateTime & Attribute.Required;
+    answered: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::night-activie.night-activie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::night-activie.night-activie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -730,13 +805,15 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::mealplan.mealplan': ApiMealplanMealplan;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::gate-move.gate-move': ApiGateMoveGateMove;
+      'api::mealplan.mealplan': ApiMealplanMealplan;
+      'api::night-activie.night-activie': ApiNightActivieNightActivie;
     }
   }
 }

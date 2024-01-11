@@ -4,7 +4,8 @@
   "info": {
     "singularName": "mealplan",
     "pluralName": "mealplans",
-    "displayName": "Mealplan"
+    "displayName": "Mealplan",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -34,6 +35,16 @@
     },
     "parentEmail": {
       "type": "email"
+    },
+    "questionSent": {
+      "type": "boolean",
+      "required": true
+    },
+    "course": {
+      "type": "string"
+    },
+    "renew": {
+      "type": "boolean"
     }
   }
 }

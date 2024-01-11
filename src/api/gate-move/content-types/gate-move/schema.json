@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gate_moves",
+  "info": {
+    "singularName": "gate-move",
+    "pluralName": "gate-moves",
+    "displayName": "GateMove"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "student_id": {
+      "type": "string"
+    },
+    "studant_name": {
+      "type": "string"
+    },
+    "schedule": {
+      "type": "string",
+      "regex": "/^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$/"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}

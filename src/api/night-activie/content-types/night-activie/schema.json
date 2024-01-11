@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "night_activies",
+  "info": {
+    "singularName": "night-activie",
+    "pluralName": "night-activies",
+    "displayName": "Night Activie",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "studentName": {
+      "type": "string",
+      "required": true
+    },
+    "course": {
+      "type": "string",
+      "required": true
+    },
+    "priority": {
+      "type": "string",
+      "required": true
+    },
+    "culturalActivitie": {
+      "type": "string",
+      "required": true
+    },
+    "esportiveActivitie": {
+      "type": "string",
+      "required": true
+    },
+    "optionalActivitie": {
+      "type": "string",
+      "required": false
+    },
+    "userAnswer": {
+      "type": "string"
+    },
+    "answerTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "answered": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
