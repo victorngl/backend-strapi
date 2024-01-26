@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mealmenus",
+  "info": {
+    "singularName": "mealmenu",
+    "pluralName": "mealmenus",
+    "displayName": "Mealmenu"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "month": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

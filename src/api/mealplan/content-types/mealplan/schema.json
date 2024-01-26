@@ -45,6 +45,9 @@
     },
     "renew": {
       "type": "boolean"
+    },
+    "regime": {
+      "type": "string"
     }
   }
 }

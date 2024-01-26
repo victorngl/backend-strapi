@@ -677,15 +677,50 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiContraturnoContraturno extends Schema.CollectionType {
+  collectionName: 'contraturnos';
+  info: {
+    singularName: 'contraturno';
+    pluralName: 'contraturnos';
+    displayName: 'Contraturno';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    studantName: Attribute.String;
+    responsibleName: Attribute.String;
+    course: Attribute.String;
+    daysContracted: Attribute.String;
+    usingDays: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contraturno.contraturno',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contraturno.contraturno',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGateMoveGateMove extends Schema.CollectionType {
   collectionName: 'gate_moves';
   info: {
     singularName: 'gate-move';
     pluralName: 'gate-moves';
     displayName: 'GateMove';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     student_id: Attribute.String;
@@ -694,7 +729,6 @@ export interface ApiGateMoveGateMove extends Schema.CollectionType {
     type: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::gate-move.gate-move',
       'oneToOne',
@@ -703,6 +737,37 @@ export interface ApiGateMoveGateMove extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::gate-move.gate-move',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMealmenuMealmenu extends Schema.CollectionType {
+  collectionName: 'mealmenus';
+  info: {
+    singularName: 'mealmenu';
+    pluralName: 'mealmenus';
+    displayName: 'Mealmenu';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    month: Attribute.String;
+    url: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::mealmenu.mealmenu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::mealmenu.mealmenu',
       'oneToOne',
       'admin::user'
     > &
@@ -740,6 +805,7 @@ export interface ApiMealplanMealplan extends Schema.CollectionType {
     questionSent: Attribute.Boolean & Attribute.Required;
     course: Attribute.String;
     renew: Attribute.Boolean;
+    regime: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -762,7 +828,7 @@ export interface ApiNightActivieNightActivie extends Schema.CollectionType {
   info: {
     singularName: 'night-activie';
     pluralName: 'night-activies';
-    displayName: 'Night Activie';
+    displayName: 'Night Activity';
     description: '';
   };
   options: {
@@ -770,14 +836,15 @@ export interface ApiNightActivieNightActivie extends Schema.CollectionType {
   };
   attributes: {
     studentName: Attribute.String & Attribute.Required;
-    course: Attribute.String & Attribute.Required;
+    courseName: Attribute.String & Attribute.Required;
     priority: Attribute.String & Attribute.Required;
-    culturalActivitie: Attribute.String & Attribute.Required;
-    esportiveActivitie: Attribute.String & Attribute.Required;
-    optionalActivitie: Attribute.String;
+    culturalActivity: Attribute.String;
+    esportiveActivity: Attribute.String;
+    optionActivity: Attribute.String;
     userAnswer: Attribute.String;
     answerTime: Attribute.DateTime & Attribute.Required;
     answered: Attribute.Boolean & Attribute.DefaultTo<false>;
+    studentId: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -811,7 +878,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::contraturno.contraturno': ApiContraturnoContraturno;
       'api::gate-move.gate-move': ApiGateMoveGateMove;
+      'api::mealmenu.mealmenu': ApiMealmenuMealmenu;
       'api::mealplan.mealplan': ApiMealplanMealplan;
       'api::night-activie.night-activie': ApiNightActivieNightActivie;
     }

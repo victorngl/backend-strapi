@@ -4,7 +4,7 @@
   "info": {
     "singularName": "night-activie",
     "pluralName": "night-activies",
-    "displayName": "Night Activie",
+    "displayName": "Night Activity",
     "description": ""
   },
   "options": {
@@ -16,7 +16,7 @@
       "type": "string",
       "required": true
     },
-    "course": {
+    "courseName": {
       "type": "string",
       "required": true
     },
@@ -24,15 +24,15 @@
       "type": "string",
       "required": true
     },
-    "culturalActivitie": {
+    "culturalActivity": {
       "type": "string",
-      "required": true
+      "required": false
     },
-    "esportiveActivitie": {
+    "esportiveActivity": {
       "type": "string",
-      "required": true
+      "required": false
     },
-    "optionalActivitie": {
+    "optionActivity": {
       "type": "string",
       "required": false
     },
@@ -46,6 +46,9 @@
     "answered": {
       "type": "boolean",
       "default": false
+    },
+    "studentId": {
+      "type": "string"
     }
   }
 }

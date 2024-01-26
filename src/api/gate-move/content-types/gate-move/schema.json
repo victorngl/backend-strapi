@@ -4,10 +4,11 @@
   "info": {
     "singularName": "gate-move",
     "pluralName": "gate-moves",
-    "displayName": "GateMove"
+    "displayName": "GateMove",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -18,8 +19,7 @@
       "type": "string"
     },
     "schedule": {
-      "type": "string",
-      "regex": "/^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$/"
+      "type": "string"
     },
     "type": {
       "type": "string"

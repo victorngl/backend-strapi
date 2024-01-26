@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contraturnos",
+  "info": {
+    "singularName": "contraturno",
+    "pluralName": "contraturnos",
+    "displayName": "Contraturno"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "studantName": {
+      "type": "string"
+    },
+    "responsibleName": {
+      "type": "string"
+    },
+    "course": {
+      "type": "string"
+    },
+    "daysContracted": {
+      "type": "string"
+    },
+    "usingDays": {
+      "type": "string"
+    }
+  }
+}
